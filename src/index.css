@@ -1,0 +1,131 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0a1410;
+  --bg-surface: #0e1a15;
+  --surface: #142420;
+  --surface-hover: #1a2e28;
+  --surface-elevated: #1f362f;
+  --text: #e4f5ec;
+  --text-secondary: #9bc2b0;
+  --text-dim: #4c6b5d;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --accent-subtle: rgba(59, 130, 246, 0.14);
+  --copper: #d97757;
+  --correct: #4ade80;
+  --correct-subtle: rgba(74, 222, 128, 0.1);
+  --wrong: #fb7185;
+  --wrong-subtle: rgba(251, 113, 133, 0.1);
+  --border: rgba(154, 224, 191, 0.09);
+  --border-hover: rgba(154, 224, 191, 0.18);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Printed-circuit-board surface: copper traces running horizontal/vertical
+   with tiny via-dots at their intersections, over a dark solder-mask green,
+   plus a soft blue glow like an active board. */
+body {
+  background-color: #081210;
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgba(59, 130, 246, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(217, 119, 87, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 18px 18px, rgba(154, 224, 191, 0.09) 1.4px, transparent 1.6px),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 35px,
+      rgba(154, 224, 191, 0.035) 35px, rgba(154, 224, 191, 0.035) 36px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 35px,
+      rgba(154, 224, 191, 0.035) 35px, rgba(154, 224, 191, 0.035) 36px
+    ),
+    linear-gradient(180deg, #0c1a15 0%, #060d0a 100%);
+  background-size: auto, auto, 36px 36px, auto, auto, auto;
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ambient pulse, like a board with power running through it */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.07) 0%, transparent 50%);
+  animation: boardPulse 5s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes boardPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes cellPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes dotGlow {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.2); }
+}
