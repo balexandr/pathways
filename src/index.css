@@ -76,6 +76,30 @@ body {
   align-items: center;
 }
 
+/* A small current pulse travels the circuit traces in straight
+   right-angle hops, echoing the lines a player draws between pairs. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle 50px at 50% 50%, rgba(59, 130, 246, 0.22) 0%, transparent 70%);
+  animation: currentFlow 10s steps(8) infinite;
+  z-index: 0;
+}
+
+@keyframes currentFlow {
+  0%    { transform: translate(-32vw, -24vh); }
+  12.5% { transform: translate(-32vw, 10vh); }
+  25%   { transform: translate(-10vw, 10vh); }
+  37.5% { transform: translate(-10vw, -20vh); }
+  50%   { transform: translate(18vw, -20vh); }
+  62.5% { transform: translate(18vw, 22vh); }
+  75%   { transform: translate(30vw, 22vh); }
+  87.5% { transform: translate(30vw, -8vh); }
+  100%  { transform: translate(-32vw, -24vh); }
+}
+
 /* Ambient pulse, like a board with power running through it */
 body::after {
   content: '';
