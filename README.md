@@ -1,6 +1,6 @@
-# Pathways — Daily Flow Puzzle
+# Pathways: Daily Flow Puzzle
 
-A daily puzzle game where you connect matching colored dot pairs with a single unbroken line — and fill every cell on the grid doing it.
+A daily puzzle game where you connect matching colored dot pairs with a single unbroken line, and fill every cell on the grid doing it.
 
 Part of the [NoodleGames](https://noodlegames.co) family alongside **Knot** and **Zero In**.
 
@@ -10,7 +10,7 @@ Part of the [NoodleGames](https://noodlegames.co) family alongside **Knot** and 
 
 Drag between two dots of the same color to connect them, moving up/down/left/right only. The board isn't solved until **every cell** belongs to a path, not just the pairs that are connected.
 
-- Drag over another color's line and it gets ripped up so you can reroute through that space — redraw as much as you like.
+- Drag over another color's line and it gets ripped up so you can reroute through that space. Redraw as much as you like.
 - There's no submit button: the board solves itself the instant every cell is filled and every pair is connected.
 - Resets daily at **midnight ET**.
 
@@ -41,7 +41,7 @@ React + Vite · CSS Modules · localStorage · GitHub Pages
 
 Puzzles run from **July 27, 2026** through **January 13, 2027** (171 days), stored in `src/data/puzzles.json` keyed by date.
 
-Difficulty follows the day of the week — easiest on Monday, climbing daily, hardest on Sunday, then resetting:
+Difficulty follows the day of the week: easiest on Monday, climbing daily, hardest on Sunday, then resetting:
 
 | Day | Grid | Colors |
 |---|---|---|
@@ -53,4 +53,4 @@ Difficulty follows the day of the week — easiest on Monday, climbing daily, ha
 | Saturday | 8×8 | 7 |
 | Sunday | 8×8 | 8 |
 
-Puzzles are generated, not hand-written: `scripts/generate-puzzles.mjs` finds a randomized Hamiltonian path covering the entire grid (a route touching every cell exactly once), then cuts it into contiguous segments — each segment's two endpoints become a color's dot pair, and the segment itself proves the puzzle is solvable. Re-run with `npm run generate-puzzles` to extend or regenerate the set.
+Puzzles are generated, not hand-written: `scripts/generate-puzzles.mjs` finds a randomized Hamiltonian path covering the entire grid (a route touching every cell exactly once), then cuts it into contiguous segments. Each segment's two endpoints become a color's dot pair, and the segment itself proves the puzzle is solvable. Re-run with `npm run generate-puzzles` to extend or regenerate the set.
