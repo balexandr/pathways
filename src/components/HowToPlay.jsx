@@ -1,3 +1,4 @@
+import { IconDrag, IconGridFill, IconReroute, IconBolt } from './Icons';
 import styles from './HowToPlay.module.css';
 
 const BLUE = '#3b82f6';
@@ -19,35 +20,35 @@ export default function HowToPlay({ onClose }) {
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <h2 className={styles.title}>How to Play</h2>
-        <p className={styles.intro}>Connect every pair of matching dots with a single line — and fill the entire grid doing it.</p>
+        <p className={styles.intro}>Connect every pair of matching dots with a single line, and fill the entire grid doing it.</p>
 
         <div className={styles.steps}>
           <div className={styles.step}>
-            <span className={styles.stepIcon}>👆</span>
+            <span className={styles.stepIcon}><IconDrag /></span>
             <div>
               <p className={styles.stepTitle}>Drag between matching dots</p>
-              <p className={styles.stepDesc}>Press a colored dot and drag through the grid to its matching dot. Only up/down/left/right moves — no diagonals.</p>
+              <p className={styles.stepDesc}>Press a colored dot and drag through the grid to its matching dot. Only up/down/left/right moves, no diagonals.</p>
             </div>
           </div>
           <div className={styles.step}>
-            <span className={styles.stepIcon}>🧩</span>
+            <span className={styles.stepIcon}><IconGridFill /></span>
             <div>
               <p className={styles.stepTitle}>Fill every cell</p>
-              <p className={styles.stepDesc}>You haven't solved it until every single cell on the board belongs to a path — not just the pairs connected.</p>
+              <p className={styles.stepDesc}>You haven't solved it until every single cell on the board belongs to a path, not just the pairs connected.</p>
             </div>
           </div>
           <div className={styles.step}>
-            <span className={styles.stepIcon}>🔀</span>
+            <span className={styles.stepIcon}><IconReroute /></span>
             <div>
               <p className={styles.stepTitle}>Paths can't cross</p>
-              <p className={styles.stepDesc}>Drag over another color's line and it gets ripped up so you can reroute through that space — redraw as much as you like.</p>
+              <p className={styles.stepDesc}>Drag over another color's line and it gets ripped up so you can reroute through that space, redraw as much as you like.</p>
             </div>
           </div>
           <div className={styles.step}>
-            <span className={styles.stepIcon}>⚡</span>
+            <span className={styles.stepIcon}><IconBolt /></span>
             <div>
               <p className={styles.stepTitle}>No submit button</p>
-              <p className={styles.stepDesc}>The board solves itself the instant every cell is filled and every pair is connected — no need to confirm anything.</p>
+              <p className={styles.stepDesc}>The board solves itself the instant every cell is filled and every pair is connected, no need to confirm anything.</p>
             </div>
           </div>
         </div>
@@ -68,7 +69,7 @@ export default function HowToPlay({ onClose }) {
               </div>
             ))}
           </div>
-          <p className={styles.exampleCaption}>Two colors, every cell filled, no crossings — that's a solve.</p>
+          <p className={styles.exampleCaption}>Two colors, every cell filled, no crossings, that's a solve.</p>
         </div>
 
         <button className={styles.playButton} onClick={onClose}>

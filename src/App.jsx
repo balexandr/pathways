@@ -9,6 +9,7 @@ import styles from './App.module.css';
 import { GameLogo } from './components/GameLogo';
 import { NoodleLogoIcon } from './components/NoodleLogo';
 import { recordTodayShare, getCompletedTodayCount, buildShareAllText, TOTAL_GAMES } from './utils/shareAll';
+import { IconCheckmark, IconShare, IconBolt } from './components/Icons';
 
 const HOW_TO_PLAY_KEY = 'pathways-how-to-play-seen';
 
@@ -92,7 +93,9 @@ export default function App() {
           className={`${styles.footerShareAll} ${shareAllCopied ? styles.copied : ''}`}
           onClick={handleShareAll}
         >
-          {shareAllCopied ? '✓ Copied' : `⬆ Share all completed (${shareAllCount}/${TOTAL_GAMES})`}
+          {shareAllCopied
+            ? <><IconCheckmark size={13} /> Copied</>
+            : <><IconShare size={13} /> Share all completed ({shareAllCount}/{TOTAL_GAMES})</>}
         </button>
       )}
       <a href="https://noodlegames.co/privacy" target="_blank" rel="noopener noreferrer" className={styles.footerPrivacy}>Privacy Policy</a>
@@ -116,7 +119,7 @@ export default function App() {
           <div className={styles.headerLeft}><Logo /></div>
         </header>
         <div className={styles.noPuzzle}>
-          <span className={styles.noPuzzleEmoji}>⚡</span>
+          <span className={styles.noPuzzleEmoji}><IconBolt size={44} /></span>
           <p>No puzzle for today yet.</p>
           <p className={styles.muted}>Check back tomorrow!</p>
         </div>
@@ -175,7 +178,7 @@ export default function App() {
 
         {gameStatus === 'playing' && (
           <p className={styles.hint}>
-            Drag between matching dots to connect them — fill every cell, don't cross your own path
+            Drag between matching dots to connect them, fill every cell, don't cross your own path
           </p>
         )}
       </main>

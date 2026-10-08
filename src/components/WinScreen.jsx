@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IconClose, IconCheckmark, IconShare, IconTrophy, IconBolt, IconTarget, IconFlame, IconCheckCircle, IconBulb, IconRibbon } from './Icons';
 import styles from './WinScreen.module.css';
 
 function getTimeToMidnight() {
@@ -21,13 +22,13 @@ function formatTime(s) {
 }
 
 function getRating(interference, seconds) {
-  if (interference === 0 && seconds < 60) return { emoji: '🏆', label: 'Flawless' };
-  if (interference === 0 && seconds < 180) return { emoji: '⚡', label: 'Clean Run' };
-  if (interference === 0) return { emoji: '🎯', label: 'No Redraws' };
-  if (interference <= 2 && seconds < 120) return { emoji: '🔥', label: 'Sharp' };
-  if (interference <= 2) return { emoji: '✅', label: 'Solid' };
-  if (interference <= 5) return { emoji: '💡', label: 'Got There' };
-  return { emoji: '💪', label: 'Determined' };
+  if (interference === 0 && seconds < 60) return { Icon: IconTrophy, label: 'Flawless' };
+  if (interference === 0 && seconds < 180) return { Icon: IconBolt, label: 'Clean Run' };
+  if (interference === 0) return { Icon: IconTarget, label: 'No Redraws' };
+  if (interference <= 2 && seconds < 120) return { Icon: IconFlame, label: 'Sharp' };
+  if (interference <= 2) return { Icon: IconCheckCircle, label: 'Solid' };
+  if (interference <= 5) return { Icon: IconBulb, label: 'Got There' };
+  return { Icon: IconRibbon, label: 'Determined' };
 }
 
 export default function WinScreen({ puzzle, puzzleNumber, elapsedSeconds, interference, generateShareText, stats, winPct, onDismiss }) {
@@ -83,10 +84,10 @@ export default function WinScreen({ puzzle, puzzleNumber, elapsedSeconds, interf
         </div>
 
         <div className={styles.resultHeader}>
-          <button className={styles.dismissBtn} onClick={onDismiss} aria-label="Close">✕</button>
-          <span className={styles.ratingEmoji}>{rating.emoji}</span>
+          <button className={styles.dismissBtn} onClick={onDismiss} aria-label="Close"><IconClose /></button>
+          <span className={styles.ratingEmoji}><rating.Icon /></span>
           <h2 className={styles.title}>{rating.label}!</h2>
-          <p className={styles.subtitle}>Pathways #{puzzleNumber} — grid complete</p>
+          <p className={styles.subtitle}>Pathways #{puzzleNumber}, grid complete</p>
         </div>
 
         <div className={styles.metricsRow}>
@@ -138,7 +139,7 @@ export default function WinScreen({ puzzle, puzzleNumber, elapsedSeconds, interf
           className={`${styles.shareButton} ${copied ? styles.copied : ''}`}
           onClick={handleShare}
         >
-          {copied ? '✓ Copied to clipboard' : '⬆ Share your result'}
+          {copied ? <><IconCheckmark /> Copied to clipboard</> : <><IconShare /> Share your result</>}
         </button>
 
         <div className={styles.countdown}>
